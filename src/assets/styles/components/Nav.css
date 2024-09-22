@@ -1,0 +1,41 @@
+.nav-container {
+}
+.nav {
+}
+.nav-content {
+}
+
+.nav-list {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  list-style: none;
+
+  span {
+  }
+  &:hover {
+  }
+}
+
+.nav-link-anchor {
+  color: cornflowerblue;
+  display: block;
+  font-size: 1.125rem;
+
+  span {
+    display: inline-block;
+  }
+
+  &:hover {
+    color: white;
+  }
+
+  &:focus {
+    color: white;
+  }
+}

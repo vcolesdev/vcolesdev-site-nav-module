@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Home",
+      "url": "/"
+    },
+    {
+      "id": 2,
+      "title": "About",
+      "url": "/about"
+    },
+    {
+      "id": 3,
+      "title": "Projects",
+      "url": "/projects"
+    },
+    {
+      "id": 4,
+      "title": "Writings",
+      "url": "/writings"
+    },
+    {
+      "id": 5,
+      "title": "Photos",
+      "url": "/photos"
+    }
+  ]
+}
