@@ -12,6 +12,10 @@ For use with personal vcolesdev-site project.
 - [React Vite](https://vitejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 
+## To Do
+
+- [ ] Improve accessibility
+
 ## License
 
 MIT License
