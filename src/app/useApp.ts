@@ -1,6 +1,5 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useEffect } from "react";
 
 /**
  * Handle the application state and actions.
@@ -9,10 +8,6 @@ import { useEffect } from "react";
 export default function useApp() {
   const mm = gsap.matchMedia();
   const breakPoint = 1000;
-
-  //const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
-  useEffect(() => {}, []);
 
   useGSAP(() => {
     const tl = gsap.timeline({ paused: true });

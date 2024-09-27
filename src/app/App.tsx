@@ -14,6 +14,10 @@ import "../assets/styles/components/Header.css";
 import "../assets/styles/components/Nav.css";
 
 /**
+ * @todo This is a pretty big component, we should probably code split this.
+ */
+
+/**
  * The main application component.
  * @component App
  */
