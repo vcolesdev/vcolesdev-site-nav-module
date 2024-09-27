@@ -1,83 +1,63 @@
 import gsap from "gsap";
-import { useState } from "react";
 import { useGSAP } from "@gsap/react";
-import { useDebouncedCallback } from "use-debounce";
-import { layoutEventsFactory } from "../events";
-import MatchMedia = gsap.MatchMedia;
-
-type LayoutEvents = "ON_DESKTOP_LAYOUT_ACTIVE" | "ON_MOBILE_LAYOUT_ACTIVE";
+import { useEffect } from "react";
 
 /**
  * Handle the application state and actions.
  * @hook useApp
  */
 export default function useApp() {
-  /* GSAP */
-  const matchMedia = gsap.matchMedia();
+  const mm = gsap.matchMedia();
+  const breakPoint = 1000;
 
-  /* State */
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  //const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
-  /**
-   * Handle the match media event.
-   * @function handleMatchMedia
-   * @param media
-   * @param eventName
-   * @param condition
-   */
-  function handleMatchMedia(
-    media: MatchMedia,
-    eventName: LayoutEvents,
-    condition: string
-  ) {
-    media.add(condition, function () {
-      layoutEventsFactory.subscribe(eventName, () => {
-        console.log(layoutEventsFactory);
-      });
-      layoutEventsFactory.notify(eventName);
-    });
-  }
+  useEffect(() => {}, []);
 
-  /**
-   * Debounce the resize event to prevent excessive calls.
-   * @function handleLayoutResize
-   */
-  const handleLayoutResize = useDebouncedCallback(() => {
-    setInnerWidth(window.innerWidth);
-    handleMatchMedia(
-      matchMedia,
-      "ON_DESKTOP_LAYOUT_ACTIVE",
-      "(min-width: 1000px)"
-    );
-    handleMatchMedia(
-      matchMedia,
-      "ON_MOBILE_LAYOUT_ACTIVE",
-      "(max-width: 999px)"
-    );
-  }, 1000);
-
-  /* Animations */
   useGSAP(() => {
-    handleMatchMedia(
-      matchMedia,
-      "ON_DESKTOP_LAYOUT_ACTIVE",
-      "(min-width: 1000px)"
-    );
-    handleMatchMedia(
-      matchMedia,
-      "ON_MOBILE_LAYOUT_ACTIVE",
-      "(max-width: 999px)"
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo(
+      ".nav-container",
+      {
+        autoAlpha: 1,
+        display: "flex",
+        opacity: 1,
+        y: 0,
+      },
+      {
+        autoAlpha: 0,
+        display: "none",
+        duration: 0.2,
+        opacity: 0,
+        y: "-100%",
+      }
     );
 
-    window.addEventListener("resize", handleLayoutResize);
-    return () => {
-      window.removeEventListener("resize", handleLayoutResize);
-    };
-  }, [innerWidth]);
+    tl.fromTo(
+      ".toggle-mobile-menu",
+      {
+        autoAlpha: 0,
+        display: "none",
+        opacity: 0,
+        position: "absolute",
+        x: 100,
+      },
+      {
+        autoAlpha: 1,
+        display: "block",
+        opacity: 1,
+        x: 0,
+      },
+      ">"
+    );
 
-  return {
-    handleMatchMedia,
-    innerWidth,
-    setInnerWidth,
-  };
+    mm.add(`(min-width: ${breakPoint}px)`, () => {
+      tl.reverse();
+    });
+
+    mm.add(`(max-width: ${breakPoint - 1}px)`, () => {
+      tl.play();
+    });
+  });
 }

@@ -43,73 +43,79 @@ function App() {
     };
   }, [isOpen, menuAnim]);
 
-  useGSAP(() => {
-    menuAnim.current = gsap.timeline({ reversed: true });
-    handleMenuAnimFrom(menuAnim.current);
-    handleMenuAnimTo(menuAnim.current);
-  });
+  useGSAP(
+    () => {
+      menuAnim.current = gsap.timeline({ ease: "none", reversed: true });
+      handleMenuAnim(menuAnim.current);
+    },
+    { scope: mobileMenu }
+  );
 
-  /**
-   * Handle the menu animation from.
-   * @param animation
-   */
-  function handleMenuAnimFrom(animation: GSAPTimeline) {
+  function handleMenuAnim(animation: GSAPTimeline) {
     if (!animation) return;
-    animation.from(mobileMenu.current, {
-      autoAlpha: 0,
-      display: "none",
-      left: "-100%",
-      opacity: 0,
-    });
-    animation.from(overlay.current, {
-      autoAlpha: 0,
-      display: "none",
-      opacity: 0,
-    });
-    animation.from(".nav-link-anchor", {
-      autoAlpha: 0,
-      display: "none",
-      left: "-100%",
-      opacity: 0,
-      stagger: 0.5,
-      x: -100,
-    });
-  }
-
-  /**
-   * Handle the menu animation to.
-   * @param animation
-   */
-  function handleMenuAnimTo(animation: GSAPTimeline) {
-    if (!animation) return;
-
-    animation.to(mobileMenu.current, {
-      autoAlpha: 1,
-      display: "block",
-      duration: 0.4,
-      left: 0,
-      opacity: 1,
-    });
-    animation.to(
+    animation.fromTo(
       overlay.current,
+      {
+        autoAlpha: 0,
+        display: "none",
+        opacity: 0,
+      },
       {
         autoAlpha: 1,
         display: "block",
-        duration: 0.4,
         opacity: 1,
-      },
-      ">"
+      }
     );
-    animation.to(
-      ".nav-link-anchor",
+    animation.fromTo(
+      mobileMenu.current,
+      {
+        autoAlpha: 0,
+        display: "none",
+        left: "-100%",
+        opacity: 0,
+      },
       {
         autoAlpha: 1,
         display: "block",
         left: 0,
         opacity: 1,
-        stagger: 0.5,
       },
-      ">"
+      "-=0.4"
+    );
+    animation.fromTo(
+      "#logoMobileMenu",
+      {
+        autoAlpha: 0,
+        display: "none",
+        opacity: 0,
+        x: -100,
+      },
+      {
+        autoAlpha: 1,
+        display: "block",
+        duration: 0.4,
+        opacity: 1,
+        x: 0,
+      }
+    );
+    animation.fromTo(
+      ".nav-link-anchor",
+      {
+        autoAlpha: 0,
+        display: "none",
+        opacity: 0,
+        stagger: 0.1,
+        x: -100,
+      },
+      {
+        autoAlpha: 1,
+        display: "block",
+        duration: 0.4,
+        opacity: 1,
+        stagger: 0.1,
+        x: 0,
+      },
+      "-=0.4"
     );
   }
 
@@ -151,7 +157,7 @@ function App() {
 
   return (
     <MobileMenuProvider>
-      <div>
+      <div style={{ position: "relative" }}>
         <Header
           btnToggle={btnToggle}
           handleOpen={handleOpen}

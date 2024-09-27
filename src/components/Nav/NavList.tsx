@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
-import NavListItems from "./NavListItems";
 
 interface NavList {
+  children: React.ReactNode | React.ReactNode[];
   id?: string;
 }
 
@@ -15,7 +15,7 @@ const NavList = forwardRef(function NavList(
 ) {
   return (
     <ul className="nav-list" id={props.id} ref={ref}>
-      <NavListItems />
+      {props.children}
     </ul>
   );
 });

@@ -1,6 +1,7 @@
 import React, { forwardRef, RefObject } from "react";
 import Logo from "../Header/Logo";
 import MobileMenuClose from "./MobileMenuClose";
+import NavList from "../Nav/NavList";
 import NavListItems from "../Nav/NavListItems";
 
 interface MobileMenu {
@@ -59,7 +60,9 @@ const MobileMenu = forwardRef(function MobileMenu(
         </LogoSlot>
         <Spacer />
         <MenuSlot>
-          <NavListItems ref={props.navItems} />
+          <NavList id="mobileMenuList">
+            <NavListItems />
+          </NavList>
         </MenuSlot>
       </aside>
     </>

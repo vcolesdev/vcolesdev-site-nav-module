@@ -3,6 +3,7 @@ import { IconMenu } from "@tabler/icons-react";
 
 interface MobileMenuToggle {
   color?: string;
+  id?: string;
   onClick: () => void;
 }
 

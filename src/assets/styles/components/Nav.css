@@ -16,9 +16,11 @@
 /* Mobile Menu Close */
 
 .mobile-menu-close {
+  display: block;
+  cursor: pointer;
   position: absolute;
-  top: 24px;
   right: 24px;
+  top: 24px;
 }
 
 .mobile-menu-close-icon {
@@ -62,33 +64,18 @@
 /* Mobile Menu Toggle */
 
 .toggle-mobile-menu {
-  display: flex;
-  position: relative;
-  top: 1px;
-  visibility: visible;
-
-  @media (min-width: 1000px) {
-    display: none;
-    visibility: hidden;
-  }
+  cursor: pointer;
+  top: 1.8rem;
 }
 
 /* Nav Elements */
 
 .nav {
   align-items: center;
-  display: flex;
 }
 
 .nav-container {
-  display: none;
   position: relative;
-  visibility: hidden;
-
-  @media (min-width: 1000px) {
-    display: flex;
-    visibility: visible;
-  }
 }
 
 .nav-content {}
@@ -101,6 +88,14 @@
   grid-gap: 3rem;
   margin: 0;
   padding: 0;
+}
+
+#vcSiteNavList {
+
+}
+
+#mobileMenuList {
+  grid-gap: 0;
 }
 
 .nav-item {

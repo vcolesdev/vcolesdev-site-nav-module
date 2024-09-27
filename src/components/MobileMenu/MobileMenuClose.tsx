@@ -1,4 +1,4 @@
-import React, { ForwardedRef } from "react";
+import { forwardRef, ForwardedRef } from "react";
 import { IconSquareRoundedX } from "@tabler/icons-react";
 
 interface MobileMenuClose {
@@ -11,7 +11,7 @@ interface MobileMenuClose {
  * @param onCloseMenu
  * @constructor
  */
-const MobileMenuClose = React.forwardRef(function MobileMenuClose(
+const MobileMenuClose = forwardRef(function MobileMenuClose(
   props: MobileMenuClose,
   ref: ForwardedRef<HTMLButtonElement>
 ) {

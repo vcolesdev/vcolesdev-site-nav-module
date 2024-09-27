@@ -3,9 +3,10 @@ import useHeader from "../../hooks/useHeader";
 import HeaderContainer from "./HeaderContainer";
 import Logo from "./Logo";
 import NavSlot from "../Nav/NavSlot";
-import Nav from "../Nav/";
+import Nav from "../Nav";
 import NavList from "../Nav/NavList";
 import NavToggle from "../Nav/NavToggle";
+import NavListItems from "../Nav/NavListItems";
 
 interface Header {
   btnToggle: RefObject<HTMLButtonElement>;
@@ -30,7 +31,9 @@ function Header(props: Header) {
         <Logo id="vcSiteLogo" />
         <NavSlot>
           <Nav id="vcSiteNav" ref={props.nav}>
-            <NavList />
+            <NavList id="vcSiteNavList">
+              <NavListItems />
+            </NavList>
           </Nav>
           <NavToggle
             btnRef={props.btnToggle}

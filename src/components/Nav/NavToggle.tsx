@@ -20,6 +20,7 @@ const NavToggle = React.forwardRef(function NavToggle(
   return (
     <div className="toggle-mobile-menu" ref={ref}>
       <MobileMenuToggle
+        id="mobileMenuToggle"
         color={props.color || "white"}
         onClick={props.onClick}
         ref={props.btnRef}
