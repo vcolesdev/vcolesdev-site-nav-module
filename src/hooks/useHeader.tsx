@@ -6,12 +6,12 @@ import ScrollTrigger from "gsap/ScrollTrigger";
  * @hook useHeader
  */
 export default function useHeader() {
-  const headerContainerRef = React.useRef<HTMLDivElement>(null);
-  const headerRef = React.useRef<HTMLElement>(null);
+  const headerContainer = React.useRef<HTMLDivElement>(null);
+  const header = React.useRef<HTMLElement>(null);
 
   function createHeaderContainerScrollTrigger() {
     return ScrollTrigger.create({
-      trigger: headerContainerRef.current!,
+      trigger: headerContainer.current!,
       start: "top -100px",
       end: 99999,
       toggleClass: {
@@ -23,7 +23,7 @@ export default function useHeader() {
 
   function createHeaderScrollTrigger() {
     return ScrollTrigger.create({
-      trigger: headerRef.current,
+      trigger: header.current!,
       start: "top -100px",
       end: 99999,
       toggleClass: {
@@ -39,7 +39,7 @@ export default function useHeader() {
   }, []);
 
   return {
-    headerContainerRef,
-    headerRef,
+    headerContainer,
+    header,
   };
 }

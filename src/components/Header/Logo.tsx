@@ -9,7 +9,7 @@ interface Logo {
 function Logo({ id }: Logo) {
   return (
     <div id={id} className="site-logo">
-      <a href="/">Vanessa Coles</a>
+      <a href="/public">Vanessa Coles</a>
     </div>
   );
 }

@@ -20,6 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "files": ["node_modules/gsap/types/index.d.ts"],
+  "files": [
+    "node_modules/gsap/types/index.d.ts",
+  ],
   "include": ["src"]
 }

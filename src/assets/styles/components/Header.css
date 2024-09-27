@@ -6,11 +6,12 @@
   display: flex;
   height: 100px;
   left: 0;
+  max-width: 100%;
   position: fixed;
   top: 0;
   transition: ease 0.3s;
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .header-container--scrolled {
