@@ -1,11 +1,5 @@
-import React, { forwardRef } from "react";
-
-interface Nav {
-  children: React.ReactNode | React.ReactNode[];
-  containerClasses?: string;
-  id: string;
-  navClasses?: string;
-}
+import { forwardRef, ForwardedRef } from "react";
+import type { NavProps } from "@/components/Nav/types";
 
 /**
  * Contains the markup for a navigation <nav> element.  This includes the NavContainer component.
@@ -14,9 +8,9 @@ interface Nav {
  * @param id
  * @param navClasses
  */
-const Nav = forwardRef(function Nav(
-  props: Nav,
-  ref: React.ForwardedRef<HTMLDivElement>
+export const Nav = forwardRef(function Nav(
+  props: NavProps,
+  ref: ForwardedRef<HTMLDivElement>
 ) {
   const containerClasses = props.containerClasses || "";
   const navClasses = props.navClasses || "";
@@ -34,5 +28,3 @@ const Nav = forwardRef(function Nav(
     </div>
   );
 });
-
-export default Nav;

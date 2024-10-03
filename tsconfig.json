@@ -1,4 +1,19 @@
 {
+  "compilerOptions": {
+    /* Aliasing */
+    "baseUrl": "./",
+    "paths": {
+      "@*": ["./src/*"],
+      "@animate": ["animate/*"],
+      "@app": ["app/*"],
+      "@assets": ["assets/*"],
+      "@components": ["components/*"],
+      "@context": ["context/*"],
+      "@events": ["events/*"],
+      "@hooks": ["hooks/*"],
+      "@utils": ["utils/*"],
+    }
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

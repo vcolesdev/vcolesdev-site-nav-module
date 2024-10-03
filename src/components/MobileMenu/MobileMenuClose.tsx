@@ -1,37 +1,32 @@
-import { forwardRef, ForwardedRef } from "react";
-import { IconSquareRoundedX } from "@tabler/icons-react";
-
-interface MobileMenuClose {
-  onClick?: () => void;
-  id: string;
-}
+import { forwardRef, ForwardedRef, useEffect } from "react";
+import { useAppElements } from "@/hooks/global/useAppElements";
+import type { MobileMenuCloseProps } from "@/components/MobileMenu/types";
+import { IconSquareRoundedX } from "@/components/Icons/IconSquareRoundedX";
 
 /**
  * The close button for the mobile menu.
  * @param onCloseMenu
  * @constructor
  */
-const MobileMenuClose = forwardRef(function MobileMenuClose(
-  props: MobileMenuClose,
+export const MobileMenuClose = forwardRef(function MobileMenuClose(
+  props: MobileMenuCloseProps,
   ref: ForwardedRef<HTMLButtonElement>
 ) {
+  const { closeBtn } = useAppElements();
+
+  useEffect(() => {}, [ref]);
+
   return (
     <button
       className="mobile-menu-close"
       id={props.id}
       onClick={props.onClick}
-      ref={ref}
+      ref={closeBtn}
     >
-      <IconSquareRoundedX
-        className="mobile-menu-close-icon"
-        color="white"
-        height={32}
-        stroke={2}
-        width={32}
-      />
-      <span className="visually-hidden">Close Mobile Menu</span>
+      <div>
+        <IconSquareRoundedX color="white" size={32} stroke={2} />
+        <span className="visually-hidden">Close Mobile Menu</span>
+      </div>
     </button>
   );
 });
-
-export default MobileMenuClose;

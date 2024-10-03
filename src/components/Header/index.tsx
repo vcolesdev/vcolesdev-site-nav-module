@@ -1,20 +1,13 @@
-import { RefObject } from "react";
-import useHeader from "../../hooks/useHeader";
-import HeaderContainer from "./HeaderContainer";
-import Logo from "./Logo";
-import NavSlot from "../Nav/NavSlot";
-import Nav from "../Nav";
-import NavList from "../Nav/NavList";
-import NavToggle from "../Nav/NavToggle";
-import NavListItems from "../Nav/NavListItems";
-
-interface Header {
-  btnToggle: RefObject<HTMLButtonElement>;
-  handleOpen: () => void;
-  id: string;
-  nav: RefObject<HTMLDivElement>;
-  outerToggle: RefObject<HTMLDivElement>;
-}
+import { ForwardedRef, forwardRef, useEffect } from "react";
+import type { HeaderProps } from "./types";
+import { useAppElements } from "@/hooks/global/useAppElements";
+import { HeaderContainer } from "@/components/Header/HeaderContainer";
+import { Logo } from "@/components/Header/Logo";
+import { Nav } from "@/components/Nav";
+import { NavSlot } from "@/components/Nav/NavSlot";
+import { NavList } from "@/components/Nav/NavList";
+import { NavListItems } from "@/components/Nav/NavListItems";
+import { BtnShowMenu } from "@/components/MobileMenu/BtnShowMenu";
 
 /**
  * The component containing the header contents of the app.
@@ -22,8 +15,13 @@ interface Header {
  * @param children
  * @param id
  */
-function Header(props: Header) {
-  const { header } = useHeader();
+export const Header = forwardRef(function Header(
+  props: HeaderProps,
+  ref: ForwardedRef<HTMLDivElement>
+) {
+  const { header } = useAppElements();
+
+  useEffect(() => {}, [ref]);
 
   return (
     <HeaderContainer>
@@ -35,16 +33,14 @@ function Header(props: Header) {
               <NavListItems />
             </NavList>
           </Nav>
-          <NavToggle
+          <BtnShowMenu
             btnRef={props.btnToggle}
             color={"#fefefe"}
-            onClick={() => props.handleOpen()}
+            onClick={props.handleOpen}
             ref={props.outerToggle}
           />
         </NavSlot>
       </header>
     </HeaderContainer>
   );
-}
-
-export default Header;
+});

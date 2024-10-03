@@ -1,33 +1,17 @@
-import React, { forwardRef, RefObject } from "react";
-import Logo from "../Header/Logo";
-import MobileMenuClose from "./MobileMenuClose";
-import NavList from "../Nav/NavList";
-import NavListItems from "../Nav/NavListItems";
-
-interface MobileMenu {
-  animTl?: GSAPTimeline;
-  btnToggle?: RefObject<HTMLButtonElement>;
-  closeBtn?: RefObject<HTMLButtonElement>;
-  handleClose?: () => void;
-  handleCloseESC?: (e: KeyboardEvent) => void;
-  handleOpen?: () => void;
-  id?: string;
-  isOpen?: boolean;
-  navItems?: RefObject<HTMLLIElement>;
-  outerToggle?: RefObject<HTMLDivElement>;
-  overlay?: RefObject<HTMLDivElement>;
-  style?: React.CSSProperties;
-}
-
-interface Slot {
-  children: React.ReactNode | React.ReactNode[];
-}
+import type { SlotProps } from "@/types";
+import { forwardRef, ForwardedRef, useEffect } from "react";
+import type { MobileMenuProps } from "@/components/MobileMenu/types";
+import { Logo } from "@/components/Header/Logo";
+import { MobileMenuClose } from "@/components/MobileMenu/MobileMenuClose";
+import { NavList } from "@/components/Nav/NavList";
+import { NavListItems } from "@/components/Nav/NavListItems";
+import { useAppElements } from "@/hooks/global/useAppElements";
 
 /* Components */
 
-const MenuSlot = (props: Slot) => <div>{props.children}</div>;
-const Spacer = () => <div style={{ marginBottom: "2rem" }} />;
-const LogoSlot = (props: Slot) => (
+export const MenuSlot = (props: SlotProps) => <div>{props.children}</div>;
+export const Spacer = () => <div style={{ marginBottom: "2rem" }} />;
+export const LogoSlot = (props: SlotProps) => (
   <div style={{ marginLeft: "2rem" }}>{props.children}</div>
 );
 
@@ -36,17 +20,21 @@ const LogoSlot = (props: Slot) => (
  * @param props
  * @component MobileMenu
  */
-const MobileMenu = forwardRef(function MobileMenu(
-  props: MobileMenu,
-  ref: React.ForwardedRef<HTMLDivElement>
+export const MobileMenu = forwardRef(function MobileMenu(
+  props: MobileMenuProps,
+  ref: ForwardedRef<HTMLDivElement>
 ) {
+  const { mobileMenu } = useAppElements();
+
+  useEffect(() => {}, [ref]);
+
   return (
     <>
       <aside
         className="mobile-menu"
         id={props.id}
         role="navigation"
-        ref={ref}
+        ref={mobileMenu}
         style={props.style}
         tabIndex={-1}
       >
@@ -61,12 +49,13 @@ const MobileMenu = forwardRef(function MobileMenu(
         <Spacer />
         <MenuSlot>
           <NavList id="mobileMenuList">
-            <NavListItems />
+            <NavListItems
+              isMobile={true}
+              linkClasses="nav-link-anchor--mobile"
+            />
           </NavList>
         </MenuSlot>
       </aside>
     </>
   );
 });
-
-export default MobileMenu;

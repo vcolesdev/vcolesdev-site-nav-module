@@ -1,10 +1,5 @@
-import React, { useEffect } from "react";
-
-interface MobileMenuOverlay {
-  id: string;
-  onClick?: () => void;
-  style?: React.CSSProperties;
-}
+import { useEffect, forwardRef, ForwardedRef } from "react";
+import type { MobileMenuOverlayProps } from "@/components/MobileMenu/types";
 
 /**
  * The overlay for the mobile menu.
@@ -12,13 +7,11 @@ interface MobileMenuOverlay {
  * @param overlayRef
  * @component MobileMenuOverlay
  */
-const MobileMenuOverlay = React.forwardRef(function MobileMenuOverlay(
-  props: MobileMenuOverlay,
-  ref: React.ForwardedRef<HTMLDivElement>
+export const MobileMenuOverlay = forwardRef(function MobileMenuOverlay(
+  props: MobileMenuOverlayProps,
+  ref: ForwardedRef<HTMLDivElement>
 ) {
-  useEffect(() => {
-    // console.log("MobileMenuOverlay: ", ref);
-  }, []);
+  useEffect(() => {}, [ref]);
 
   return (
     <div
@@ -30,5 +23,3 @@ const MobileMenuOverlay = React.forwardRef(function MobileMenuOverlay(
     />
   );
 });
-
-export default MobileMenuOverlay;

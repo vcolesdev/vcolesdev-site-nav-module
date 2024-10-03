@@ -1,9 +1,4 @@
-interface NavLink {
-  id: string | number;
-  linkClasses?: string;
-  linkText: string;
-  url: string;
-}
+import type { NavLinkProps } from "@/components/Nav/types";
 
 /**
  * An anchor tag for navigation links. This component is used in the NavItems component in the useNavItems hook.
@@ -12,7 +7,7 @@ interface NavLink {
  * @param linkText
  * @param url
  */
-function NavLink({ id, linkClasses, linkText, url }: NavLink) {
+export function NavLink({ id, linkClasses, linkText, url }: NavLinkProps) {
   return (
     <a
       className={`nav-link-anchor ${linkClasses || ""}`}
@@ -23,5 +18,3 @@ function NavLink({ id, linkClasses, linkText, url }: NavLink) {
     </a>
   );
 }
-
-export default NavLink;

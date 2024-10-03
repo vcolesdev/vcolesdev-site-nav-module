@@ -1,22 +1,20 @@
-import useHeader from "../../hooks/useHeader";
-import React from "react";
-
-interface HeaderContainer {
-  children: React.ReactNode | React.ReactNode[];
-}
+import type { HeaderContainerProps } from "@/components/Header/types";
+import { useHeader } from "@/hooks/elements/useHeader";
 
 /**
  * The container component for our site header.
  * @component HeaderContainer
  */
-function HeaderContainer({ children }: HeaderContainer) {
+export function HeaderContainer({ children }: HeaderContainerProps) {
   const { headerContainer } = useHeader();
 
   return (
-    <div className="header-container" ref={headerContainer}>
+    <div
+      className="header-container"
+      id="headerContainer"
+      ref={headerContainer}
+    >
       {children}
     </div>
   );
 }
-
-export default HeaderContainer;

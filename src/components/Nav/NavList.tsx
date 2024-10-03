@@ -1,17 +1,13 @@
-import React, { forwardRef } from "react";
-
-interface NavList {
-  children: React.ReactNode | React.ReactNode[];
-  id?: string;
-}
+import { forwardRef, ForwardedRef } from "react";
+import type { NavListProps } from "@/components/Nav/types";
 
 /**
  * A functional component that renders a list of navigation links.
  * @constructor NavList
  */
-const NavList = forwardRef(function NavList(
-  props: NavList,
-  ref: React.ForwardedRef<HTMLUListElement>
+export const NavList = forwardRef(function NavList(
+  props: NavListProps,
+  ref: ForwardedRef<HTMLUListElement>
 ) {
   return (
     <ul className="nav-list" id={props.id} ref={ref}>
@@ -19,5 +15,3 @@ const NavList = forwardRef(function NavList(
     </ul>
   );
 });
-
-export default NavList;

@@ -1,0 +1,33 @@
+#vcSiteLogo {
+  font-size: 20px;
+  transition: 0.3s ease;
+
+  .fullname {
+    display: none;
+  }
+
+  .truncated {
+    display: block;
+  }
+
+  a {
+    color: #eee;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 22px;
+
+    .fullname {
+      display: block;
+    }
+
+    .truncated {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    font-size: 24px;
+  }
+}

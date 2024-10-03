@@ -1,15 +1,11 @@
-import React from "react";
-
-interface NavSlot {
-  children: React.ReactNode | React.ReactNode[];
-}
+import type { NavSlotProps } from "@/components/Nav/types";
 
 /**
  * A slot for the navigation elements.
  * @param children
  * @component NavSlot
  */
-function NavSlot({ children }: NavSlot) {
+export function NavSlot({ children }: NavSlotProps) {
   return (
     <div
       style={{
@@ -22,5 +18,3 @@ function NavSlot({ children }: NavSlot) {
     </div>
   );
 }
-
-export default NavSlot;

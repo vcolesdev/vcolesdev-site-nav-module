@@ -1,17 +1,16 @@
-interface Logo {
-  id: string;
-}
+import type { LogoProps } from "@/components/Header/types";
 
 /**
  * Custom logo for testing purposes.
  * @param id
  */
-function Logo({ id }: Logo) {
+export function Logo({ id }: LogoProps) {
   return (
     <div id={id} className="site-logo">
-      <a href="/public">Vanessa Coles</a>
+      <a href="#">
+        <span className="fullname">Vanessa Coles</span>
+        <span className="truncated">Vanessa C.</span>
+      </a>
     </div>
   );
 }
-
-export default Logo;

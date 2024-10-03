@@ -18,7 +18,21 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Aliasing */
+    "baseUrl": "./",
+    "paths": {
+      "@*": ["./src/*"],
+      "@animate": ["animate/*"],
+      "@app": ["app/*"],
+      "@assets": ["assets/*"],
+      "@components": ["components/*"],
+      "@context": ["context/*"],
+      "@events": ["events/*"],
+      "@hooks": ["hooks/*"],
+      "@utils": ["utils/*"],
+    }
   },
   "files": [
     "node_modules/gsap/types/index.d.ts",

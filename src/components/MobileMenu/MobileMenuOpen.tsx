@@ -1,21 +1,18 @@
-import { ForwardedRef, forwardRef, useEffect } from "react";
-import { IconMenu } from "@tabler/icons-react";
-
-interface MobileMenuToggle {
-  color?: string;
-  id?: string;
-  onClick: () => void;
-}
+import { ForwardedRef, forwardRef, useEffect, useRef } from "react";
+import { IconMenu } from "@/components/Icons/IconMenu";
+import type { MobileMenuOpenProps } from "@/components/MobileMenu/types";
 
 /**
  * A button component that toggles the mobile menu.
  * @component MobileMenuToggle
  */
-const MobileMenuToggle = forwardRef(function BtnToggleMobileMenu(
-  props: MobileMenuToggle,
+export const MobileMenuOpen = forwardRef(function MobileMenuOpen(
+  props: MobileMenuOpenProps,
   ref: ForwardedRef<HTMLButtonElement>
 ) {
-  useEffect(() => {}, []);
+  const btnToggle = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {}, [ref]);
 
   return (
     <button
@@ -23,7 +20,7 @@ const MobileMenuToggle = forwardRef(function BtnToggleMobileMenu(
       className="btn btn-toggle-mobile-menu"
       id="btnMobileMenuToggle"
       onClick={props.onClick}
-      ref={ref}
+      ref={btnToggle}
     >
       <span
         style={{
@@ -38,5 +35,3 @@ const MobileMenuToggle = forwardRef(function BtnToggleMobileMenu(
     </button>
   );
 });
-
-export default MobileMenuToggle;
